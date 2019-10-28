@@ -1,0 +1,21 @@
+{
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "workbench.iconTheme": "vscode-icons",
+    "python.pythonPath": "/Users/ydc/pyjsenv/bin/python3",
+    "python.jediEnabled": false,
+    "debug.console.fontSize": 15,
+    "markdown.preview.fontSize": 15,
+    "terminal.integrated.fontSize": 15,
+    "window.zoomLevel": 1,
+    "editor.fontSize": 16,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 100,
+    "editor.formatOnSave": true,
+    "eslint.packageManager": "yarn",
+    "workbench.colorTheme": "Monokai Pro",
+    "editor.fontFamily": "'Hack', Menlo, Monaco, 'Courier New', monospace",
+    "terminal.integrated.cursorStyle": "underline",
+    "python.linting.enabled": true
+}
