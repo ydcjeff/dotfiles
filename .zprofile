@@ -9,6 +9,7 @@ export PATH="/usr/local/lib/ruby/gems/2.6.0/bin:$PATH"
 export PATH="/Users/ydc/.local/bin:$PATH"
 
 # alias kai="source ./zzz/bin/activate"
+alias guan="conda deactivate"
 alias ls="ls | lolcat -F"
 export PATH=~/bin:/Users/ydc/.local/bin:/usr/local/lib/ruby/gems/2.6.0/bin:/usr/local/opt/ruby/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Library/Apple/bin
 export PATH=~/bin:/Users/ydc/bin:/Users/ydc/.local/bin:/usr/local/lib/ruby/gems/2.6.0/bin:/usr/local/opt/ruby/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Library/Apple/bin
@@ -17,8 +18,9 @@ function kai(){
     conda activate "$1"
 }
 
-function jia() {
-    git add .
-    git commit -m "$1"
-    git push
-}
+export PATH="$HOME/.cargo/bin:$PATH"
+
+if [ -d "$HOME/adb-fastboot/platform-tools" ] ; then
+ export PATH="$HOME/adb-fastboot/platform-tools:$PATH"
+fi
+
