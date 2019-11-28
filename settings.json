@@ -15,9 +15,8 @@
     "workbench.colorTheme": "Monokai Pro",
     "editor.fontFamily": "'Hack', Menlo, Monaco, 'Courier New', monospace",
     "terminal.integrated.cursorStyle": "underline",
+    "terminal.integrated.shell.osx": "/usr/local/bin/fish",
     "python.autoComplete.addBrackets": true,
-    "python.linting.enabled": true,
-    "python.linting.pylintEnabled": true,
     "python.linting.lintOnSave": true,
     "python.terminal.activateEnvironment": true,
     "python.testing.unittestEnabled": false,
@@ -28,8 +27,11 @@
     "workbench.statusBar.visible": true,
     "window.zoomLevel": 0,
     "editor.renderControlCharacters": true,
-    "editor.renderWhitespace": "all",
+    // "editor.renderWhitespace": "all",
     "editor.minimap.enabled": false,
     "breadcrumbs.enabled": true,
-    "terminal.integrated.inheritEnv": false
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "diffEditor.ignoreTrimWhitespace": false
 }
