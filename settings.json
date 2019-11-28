@@ -7,26 +7,31 @@
     "debug.console.fontSize": 15,
     "markdown.preview.fontSize": 15,
     "terminal.integrated.fontSize": 15,
-    "window.zoomLevel": 1,
-    "editor.fontSize": 16,
+    "editor.fontSize": 17,
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 100,
     "editor.formatOnSave": true,
-    "editor.formatOnPaste": true,
     "eslint.packageManager": "yarn",
     "workbench.colorTheme": "Monokai Pro",
     "editor.fontFamily": "'Hack', Menlo, Monaco, 'Courier New', monospace",
     "terminal.integrated.cursorStyle": "underline",
-    "python.pythonPath": "/Users/ydc/zzz/bin/python3",
+    "terminal.integrated.shell.osx": "/usr/local/bin/fish",
     "python.autoComplete.addBrackets": true,
-    "python.autoComplete.extraPaths": ["/Users/ydc/zzz/lib/python3.7/"],
-    "python.formatting.provider": "autopep8",
-    "python.linting.enabled": true,
-    "python.linting.pylintEnabled": true,
     "python.linting.lintOnSave": true,
     "python.terminal.activateEnvironment": true,
     "python.testing.unittestEnabled": false,
     "[jsonc]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    },
+    "workbench.sideBar.location": "right",
+    "workbench.statusBar.visible": true,
+    "window.zoomLevel": 0,
+    "editor.renderControlCharacters": true,
+    // "editor.renderWhitespace": "all",
+    "editor.minimap.enabled": false,
+    "breadcrumbs.enabled": true,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "diffEditor.ignoreTrimWhitespace": false
 }

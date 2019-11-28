@@ -17,3 +17,13 @@ export PATH=~/bin:/Users/ydc/bin:/Users/ydc/.local/bin:/usr/local/lib/ruby/gems/
 function kai(){
     conda activate "$1"
 }
+<<<<<<< HEAD
+=======
+
+export PATH="$HOME/.cargo/bin:$PATH"
+
+if [ -d "$HOME/adb-fastboot/platform-tools" ] ; then
+ export PATH="$HOME/adb-fastboot/platform-tools:$PATH"
+fi
+
+>>>>>>> 9403456a7874a12dea83b8e90a067040de09145d
