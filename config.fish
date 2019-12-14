@@ -15,6 +15,7 @@ alias gs="git status"
 alias ga="git add"
 alias gc="git commit"
 alias gp="git push"
+alias xin="sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade"
 
 function kai
     conda activate $argv
