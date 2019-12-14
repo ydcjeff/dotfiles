@@ -9,8 +9,16 @@ export PATH="/usr/local/lib/ruby/gems/2.6.0/bin:$PATH"
 export PATH="/Users/ydc/.local/bin:$PATH"
 
 # alias kai="source ./zzz/bin/activate"
+
 alias guan="conda deactivate"
-alias ls="ls | lolcat -F"
+alias c="clear"
+alias l="ls | lolcat -F"
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit"
+alias gp="git push"
+alias xin="sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade"
+
 export PATH=~/bin:/Users/ydc/.local/bin:/usr/local/lib/ruby/gems/2.6.0/bin:/usr/local/opt/ruby/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Library/Apple/bin
 export PATH=~/bin:/Users/ydc/bin:/Users/ydc/.local/bin:/usr/local/lib/ruby/gems/2.6.0/bin:/usr/local/opt/ruby/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Library/Apple/bin
 
