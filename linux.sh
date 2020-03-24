@@ -2,54 +2,65 @@
 mkdir -p "/usr/local/lib"
 mkdir -p "/usr/local/bin"
 
+# update the system
+sudo dnf update
+
 # Install common software
-echo "Downloading Chrome..."
+echo "Downloading Chrome...\n"
 curl -L https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg --output chrome.dmg
-echo "Downloading Brave..."
-curl -L https://brave-browser-downloads.s3.brave.com/latest/Brave-Browser.dmg --output brave.dmg
-echo "Downloading Telegram..."
-curl -L https://osx.telegram.org/updates/Telegram.dmg --output telegram.dmg
-echo "Downloading AndroidFileTransfer..."
-curl -L https://dl.google.com/dl/androidjumper/mtp/5071136/AndroidFileTransfer.dmg AndroidFileTransfer.dmg
-echo "Downloading balenaEtcher..."
-curl -L https://github.com/balena-io/etcher/releases/download/v1.5.79/balenaEtcher-1.5.79.dmg --output etcher.dmg
-echo "Downloading Xiami..."
-curl -L https://gxiami.alicdn.com/xiami-desktop/update/XiamiMac756.dmg --output xiami.dmg
-echo "Downloading VirtualBox..."
-curl -L https://download.virtualbox.org/virtualbox/6.1.4/VirtualBox-6.1.4-136177-OSX.dmg --output vbox.dmg
-echo "Downloading Nodejs..."
-curl -L https://nodejs.org/dist/v12.16.1/node-v12.16.1.pkg --output node.pkg
-echo "Downloading Miniconda..."
-curl -L https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh --output miniconda.sh
-echo "Downloading Starship shell theme..."
+
+echo "\nInstalling Brave...\n"
+sudo dnf install dnf-plugins-core
+
+sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
+
+sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+
+sudo dnf install brave-browser
+
+echo "\nInstalling Telegram...\n"
+curl -L https://updates.tdesktop.com/tlinux/tsetup.1.9.21.tar.xz --output telegram.tar.xz
+tar -zxf telegram.tar.xz
+
+echo "\nInstalling balenaEtcher...\n"
+sudo wget https://balena.io/etcher/static/etcher-rpm.repo -O /etc/yum.repos.d/etcher-rpm.repo
+
+sudo dnf install -y balena-etcher-electron
+
+echo "\nInstalling Nodejs...\n"
+sudo dnf install nodejs
+
+echo "\nDownloading Miniconda...\n"
+curl -L https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh --output miniconda.sh
+
+echo "\nInstalling Starship shell theme...\n"
 curl -fsSL https://starship.rs/install.sh | bash
-open https://www.alfredapp.com/
-open https://iterm2.com/
-open https://python.org/
-open https://https://www.mozilla.org/en-US/firefox/new/
-open https://sublimetext.com/
+
+echo "\nInstalling Sublime Text 3...\n"
+sudo rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
+sudo dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
+sudo dnf install sublime-text
+
 open https://code.visualstudio.com/
-open https://git-scm.com/downloads/
+
+echo "\nInstalling Git"
+sudo dnf install git-all
+
 open https://www.sublimetext.com/docs/3/osx_command_line.html/
 
 # install common used font
-echo "Downloading Hack font..."
+echo "\nDownloading Hack font...\n"
 curl -L https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.tar.gz --output hack.tar.gz
 tar -zxf hack.tar.gz
 
-# Check for Homebrew,
-# Install if we don't have it
-if test ! $(which brew); then
-  echo "Installing Homebrew..."
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
+sudo cp -R ~/ttf/Hack-Regular.ttf ~/usr/local/share/fonts/
+fc-cache -f -v
+fc-list | grep "Hack"
 
-# Update homebrew recipes
-brew update
+# Install and use latest yarn, hugo and fish shell
+curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
 
-# Install and use latest bash
-brew install bash yarn hugo fish
-chsh -s /usr/local/bin/bash
+sudo dnf install yarn hugo fish
 
 sudo cp -R ~/.dotfiles/hyper/.hyper.js ~/.hyper.js && sudo cp -R ~/.dotfiles/conda/.condarc ~/.condarc && sudo cp -R ~/.dotfiles/fish/config.fish ~/.config/fish/config.fish
 
