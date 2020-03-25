@@ -13,7 +13,7 @@ echo "\nDownloading Telegram...\n"
 curl -L https://osx.telegram.org/updates/Telegram.dmg --output telegram.dmg
 
 echo "\nDownloading AndroidFileTransfer...\n"
-curl -L https://dl.google.com/dl/androidjumper/mtp/5071136/AndroidFileTransfer.dmg AndroidFileTransfer.dmg
+curl -L https://dl.google.com/dl/androidjumper/mtp/5071136/AndroidFileTransfer.dmg --output AndroidFileTransfer.dmg
 
 echo "\nDownloading balenaEtcher...\n"
 curl -L https://github.com/balena-io/etcher/releases/download/v1.5.79/balenaEtcher-1.5.79.dmg --output etcher.dmg
@@ -36,7 +36,7 @@ curl -fsSL https://starship.rs/install.sh | bash
 open https://www.alfredapp.com/
 open https://iterm2.com/
 open https://python.org/
-open https://https://www.mozilla.org/en-US/firefox/new/
+open https://www.mozilla.org/en-US/firefox/new/
 open https://sublimetext.com/
 open https://code.visualstudio.com/
 open https://git-scm.com/downloads/
@@ -60,7 +60,7 @@ brew update
 # Install and use latest yarn, hugo and fish shell
 brew install yarn hugo fish
 
-sudo cp -R ~/.dotfiles/hyper/.hyper.js ~/.hyper.js && sudo cp -R ~/.dotfiles/conda/.condarc ~/.condarc && sudo cp -R ~/.dotfiles/fish/config.fish ~/.config/fish/config.fish
+sudo cp -R ~/.dotfiles/hyper/.hyper.js ~/.hyper.js && sudo cp -R ~/.dotfiles/conda/.condarc ~/.condarc && sudo cp -R ~/.dotfiles/fish/config.fish ~/.config/fish/config.fish && sudo cp -R ~/.dotfiles/starship.toml ~/.config/starship.toml
 
 # Some git defaults
 git config --global color.ui true

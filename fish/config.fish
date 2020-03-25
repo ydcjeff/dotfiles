@@ -1,3 +1,9 @@
+# remove fish shell greeting
+set fish_greeting
+
+# starship theme env variable
+set -x STARSHIP_CONFIG $HOME/.dotfiles/
+
 # conda configs
 eval $HOME/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 

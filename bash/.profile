@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export STARSHIP_CONFIG=~/.dotfiles/starship.toml
+export STARSHIP_CONFIG=~/.dotfiles/
 
 DOTFILES_PATH=~/.dotfiles # $HOME/.dotfiles
 BASH_SRC_PATH=$DOTFILES_PATH/bash # $HOME/.dotfiles/bash
