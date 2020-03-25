@@ -42,6 +42,7 @@ sudo dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x
 sudo dnf install sublime-text
 
 open https://code.visualstudio.com/
+open https://hyper.is/
 
 echo "\nInstalling Git"
 sudo dnf install git-all
