@@ -7,7 +7,7 @@ sudo dnf upgrade
 
 # Install common software
 echo "\nDownloading Chrome...\n"
-curl -L https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg --output chrome.dmg
+curl -L https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm --output Chrome.rpm
 
 echo "\nInstalling Brave...\n"
 sudo dnf install dnf-plugins-core
