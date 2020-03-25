@@ -2,8 +2,8 @@
 mkdir -p "/usr/local/lib"
 mkdir -p "/usr/local/bin"
 
-# update the system
-sudo dnf update
+# upgrade the system
+sudo dnf upgrade
 
 # Install common software
 echo "\nDownloading Chrome...\n"
