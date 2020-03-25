@@ -49,7 +49,7 @@ module.exports = {
     selectionColor: 'rgba(248,28,229,0.3)',
 
     // border color (window, tabs)
-    borderColor: '#333',
+    borderColor: '#4fc08d',
 
     // custom CSS to embed in the main window
     css: '',
@@ -74,7 +74,7 @@ module.exports = {
     // an array here instead of a color map object
     colors: {
       black: '#000000',
-      red: '#cc4c2c',
+      red: '#ee4c2c',
       green: '#4fc08d',
       yellow: '#C7C329',
       blue: '#0A2FC4',

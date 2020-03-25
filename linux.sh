@@ -63,7 +63,7 @@ curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yu
 
 sudo dnf install yarn hugo fish
 
-sudo cp -R ~/.dotfiles/hyper/.hyper.js ~/.hyper.js && sudo cp -R ~/.dotfiles/conda/.condarc ~/.condarc && sudo cp -R ~/.dotfiles/fish/config.fish ~/.config/fish/config.fish
+sudo cp -Rv ~/.dotfiles/hyper/.hyper.js ~/.hyper.js && sudo cp -Rv ~/.dotfiles/conda/.condarc ~/.condarc && sudo cp -Rv ~/.dotfiles/fish/config.fish ~/.config/fish/config.fish && sudo cp -Rv ~/.dotfiles/starship.toml ~/.config/starship.toml
 
 # Some git defaults
 git config --global color.ui true
