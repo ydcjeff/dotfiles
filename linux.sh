@@ -47,8 +47,6 @@ open https://hyper.is/
 echo "\nInstalling Git"
 sudo dnf install git-all
 
-open https://www.sublimetext.com/docs/3/osx_command_line.html/
-
 # install common used font
 echo "\nDownloading Hack font...\n"
 curl -L https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.tar.gz --output hack.tar.gz

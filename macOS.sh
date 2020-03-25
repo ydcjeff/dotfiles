@@ -40,7 +40,6 @@ open https://www.mozilla.org/en-US/firefox/new/
 open https://sublimetext.com/
 open https://code.visualstudio.com/
 open https://git-scm.com/downloads/
-open https://www.sublimetext.com/docs/3/osx_command_line.html/
 
 # install common used font
 echo "\nDownloading Hack font...\n"
