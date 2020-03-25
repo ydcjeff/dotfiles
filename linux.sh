@@ -6,10 +6,10 @@ mkdir -p "/usr/local/bin"
 sudo dnf upgrade
 
 # Install common software
-echo "\nDownloading Chrome...\n"
+echo -e "\nDownloading Chrome...\n"
 curl -L https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm --output Chrome.rpm
 
-echo "\nInstalling Brave...\n"
+echo -e "\nInstalling Brave...\n"
 sudo dnf install dnf-plugins-core
 
 sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
@@ -18,25 +18,25 @@ sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
 
 sudo dnf install brave-browser
 
-echo "\nInstalling Telegram...\n"
+echo -e "\nInstalling Telegram...\n"
 curl -L https://updates.tdesktop.com/tlinux/tsetup.1.9.21.tar.xz --output telegram.tar.xz
 tar -zxf telegram.tar.xz
 
-echo "\nInstalling balenaEtcher...\n"
+echo -e "\nInstalling balenaEtcher...\n"
 sudo wget https://balena.io/etcher/static/etcher-rpm.repo -O /etc/yum.repos.d/etcher-rpm.repo
 
 sudo dnf install -y balena-etcher-electron
 
-echo "\nInstalling Nodejs...\n"
+echo -e "\nInstalling Nodejs...\n"
 sudo dnf install nodejs
 
-echo "\nDownloading Miniconda...\n"
+echo -e "\nDownloading Miniconda...\n"
 curl -L https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh --output miniconda.sh
 
-echo "\nInstalling Starship shell theme...\n"
+echo -e "\nInstalling Starship shell theme...\n"
 curl -fsSL https://starship.rs/install.sh | bash
 
-echo "\nInstalling Sublime Text 3...\n"
+echo -e "\nInstalling Sublime Text 3...\n"
 sudo rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
 sudo dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
 sudo dnf install sublime-text
@@ -44,11 +44,11 @@ sudo dnf install sublime-text
 open https://code.visualstudio.com/
 open https://hyper.is/
 
-echo "\nInstalling Git"
+echo -e "\nInstalling Git"
 sudo dnf install git-all
 
 # install common used font
-echo "\nDownloading Hack font...\n"
+echo -e "\nDownloading Hack font...\n"
 curl -L https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.tar.gz --output hack.tar.gz
 tar -zxf hack.tar.gz
 
