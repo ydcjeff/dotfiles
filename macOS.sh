@@ -3,7 +3,7 @@ mkdir -p "/usr/local/lib"
 mkdir -p "/usr/local/bin"
 
 # Install common software
-echo "Downloading Chrome...\n"
+echo "\nDownloading Chrome...\n"
 curl -L https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg --output chrome.dmg
 
 echo "\nDownloading Brave...\n"

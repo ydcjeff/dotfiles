@@ -6,7 +6,7 @@ mkdir -p "/usr/local/bin"
 sudo dnf update
 
 # Install common software
-echo "Downloading Chrome...\n"
+echo "\nDownloading Chrome...\n"
 curl -L https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg --output chrome.dmg
 
 echo "\nInstalling Brave...\n"
