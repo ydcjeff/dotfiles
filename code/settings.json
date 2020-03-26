@@ -1,9 +1,5 @@
 {
-    "workbench.startupEditor": "newUntitledFile",
-    "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "workbench.iconTheme": "vscode-icons",
-    "python.jediEnabled": false,
+    "workbench.iconTheme": "eq-material-theme-icons-palenight",
     "debug.console.fontSize": 15,
     "markdown.preview.fontSize": 15,
     "terminal.integrated.fontSize": 15,
@@ -12,26 +8,10 @@
     "files.autoSaveDelay": 100,
     "editor.formatOnSave": true,
     "eslint.packageManager": "yarn",
-    "workbench.colorTheme": "Monokai Pro",
+    "workbench.colorTheme": "Material Theme Palenight",
     "editor.fontFamily": "'Hack', Menlo, Monaco, 'Courier New', monospace",
-    "terminal.integrated.cursorStyle": "underline",
     "terminal.integrated.shell.osx": "/usr/local/bin/fish",
     "python.autoComplete.addBrackets": true,
-    "python.linting.lintOnSave": true,
-    "python.terminal.activateEnvironment": true,
-    "python.testing.unittestEnabled": false,
-    "[jsonc]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "workbench.sideBar.location": "right",
-    "workbench.statusBar.visible": true,
-    "window.zoomLevel": 0,
-    "editor.renderControlCharacters": true,
-    // "editor.renderWhitespace": "all",
-    "editor.minimap.enabled": false,
-    "breadcrumbs.enabled": true,
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "diffEditor.ignoreTrimWhitespace": false
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
 }
