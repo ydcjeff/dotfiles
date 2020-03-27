@@ -5,7 +5,7 @@ set fish_greeting
 # set -x STARSHIP_CONFIG $HOME/.dotfiles/
 
 # conda configs
-eval $HOME/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+# eval $HOME/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 
 alias c="clear"
 
