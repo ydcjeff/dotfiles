@@ -65,7 +65,7 @@ sudo cp -Rv ~/.dotfiles/hyper/.hyper.js ~/.hyper.js && sudo cp -Rv ~/.dotfiles/c
 git config --global color.ui true
 git config --global push.default simple
 git config --global user.name "ydcjeff"
-git config --global user.email "ydcjeff@outlook.com"
+git config --global user.email "ydc.jeff@gmail.com"
 
 echo 'source ~/.dotfiles/bash/.profile' >> ~/.profile
 source ~/.profile
