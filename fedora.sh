@@ -41,8 +41,8 @@ sudo rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
 sudo dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
 sudo dnf install sublime-text
 
-open https://code.visualstudio.com/
-open https://hyper.is/
+xdg-open https://code.visualstudio.com/
+xdg-open https://hyper.is/
 
 echo -e "\nInstalling Git"
 sudo dnf install git-all
@@ -52,7 +52,7 @@ echo -e "\nDownloading Hack font...\n"
 curl -L https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.tar.gz --output hack.tar.gz
 tar -zxf hack.tar.gz
 
-sudo cp -R ~/ttf/Hack-Regular.ttf ~/usr/local/share/fonts/
+sudo cp -Rv ~/ttf/Hack-Regular.ttf ~/usr/local/share/fonts/
 fc-cache -f -v
 fc-list | grep "Hack"
 

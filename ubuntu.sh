@@ -47,8 +47,8 @@ echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sou
 sudo apt update
 sudo apt install sublime-text
 
-open https://code.visualstudio.com/
-open https://hyper.is/
+xdg-open https://code.visualstudio.com/
+xdg-open https://hyper.is/
 
 echo -e "\nInstalling Git"
 sudo apt install git-all
@@ -58,7 +58,7 @@ echo -e "\nDownloading Hack font...\n"
 curl -L https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.tar.gz --output hack.tar.gz
 tar -zxf hack.tar.gz
 
-sudo cp -R ~/ttf/Hack-Regular.ttf ~/usr/local/share/fonts/
+sudo cp -Rv ~/ttf/Hack-Regular.ttf ~/usr/local/share/fonts/
 fc-cache -f -v
 fc-list | grep "Hack"
 
