@@ -10,7 +10,7 @@
     "eslint.packageManager": "yarn",
     "workbench.colorTheme": "Material Theme Palenight",
     "editor.fontFamily": "'Hack', Menlo, Monaco, 'Courier New', monospace",
-    "terminal.integrated.shell.osx": "/usr/local/bin/fish",
+    "terminal.integrated.shell.osx": "/usr/local/bin/bash",
     "python.autoComplete.addBrackets": true,
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"

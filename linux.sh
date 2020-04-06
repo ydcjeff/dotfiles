@@ -30,9 +30,6 @@ sudo dnf install -y balena-etcher-electron
 echo -e "\nInstalling Nodejs...\n"
 sudo dnf install nodejs
 
-echo -e "\nDownloading Miniconda...\n"
-curl -L https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh --output miniconda.sh
-
 echo -e "\nInstalling Starship shell theme...\n"
 curl -fsSL https://starship.rs/install.sh | bash
 
@@ -52,22 +49,20 @@ echo -e "\nDownloading Hack font...\n"
 curl -L https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.tar.gz --output hack.tar.gz
 tar -zxf hack.tar.gz
 
-sudo cp -Rv ~/ttf/Hack-Regular.ttf ~/usr/local/share/fonts/
+sudo cp -Rv ~/ttf/Hack-Regular.ttf ~/usr/share/fonts/
 fc-cache -f -v
 fc-list | grep "Hack"
 
 # Install and use latest yarn, hugo and fish shell
 curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
 
-sudo dnf install yarn fish
+sudo dnf install yarn fish python3 python3-wheel python3-pip
 
-sudo cp -Rv ~/.dotfiles/hyper/.hyper.js ~/.hyper.js && sudo cp -Rv ~/.dotfiles/conda/.condarc ~/.condarc && sudo cp -Rv ~/.dotfiles/fish/config.fish ~/.config/fish/config.fish && sudo cp -Rv ~/.dotfiles/starship.toml ~/.config/starship.toml
+sudo cp -Rv ~/.dotfiles/hyper/.hyper.js ~/.hyper.js
 
 # Some git defaults
 git config --global color.ui true
 git config --global push.default simple
-git config --global user.name "ydcjeff"
-git config --global user.email "ydc.jeff@gmail.com"
 
-echo 'source ~/.dotfiles/bash/.profile' >> ~/.profile
-source ~/.profile
+echo 'source ~/.dotfiles/bash/.bash_profile' >> ~/.bash_profile
+source ~/.bash_profile

@@ -27,9 +27,6 @@ curl -L https://download.virtualbox.org/virtualbox/6.1.4/VirtualBox-6.1.4-136177
 echo "\nDownloading Nodejs...\n"
 curl -L https://nodejs.org/dist/v12.16.1/node-v12.16.1.pkg --output node.pkg
 
-echo "\nDownloading Miniconda...\n"
-curl -L https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh --output miniconda.sh
-
 echo "\nDownloading Starship shell theme...\n"
 curl -fsSL https://starship.rs/install.sh | bash
 
@@ -59,13 +56,11 @@ brew update
 # Install and use latest yarn, hugo and fish shell
 brew install yarn hugo fish
 
-sudo cp -Rv ~/.dotfiles/hyper/.hyper.js ~/.hyper.js && sudo cp -Rv ~/.dotfiles/conda/.condarc ~/.condarc && sudo cp -Rv ~/.dotfiles/fish/config.fish ~/.config/fish/config.fish && sudo cp -Rv ~/.dotfiles/starship.toml ~/.config/starship.toml
+sudo cp -Rv ~/.dotfiles/hyper/.hyper.js ~/.hyper.js
 
 # Some git defaults
 git config --global color.ui true
 git config --global push.default simple
-git config --global user.name "ydcjeff"
-git config --global user.email "ydc.jeff@gmail.com"
 
-echo 'source ~/.dotfiles/bash/.profile' >> ~/.profile
-source ~/.profile
+echo 'source ~/.dotfiles/bash/.bash_profile' >> ~/.bash_profile
+source ~/.bash_profile

@@ -1,5 +1,6 @@
 # Personal dotfiles
 - Terminal
+	- Bash
     - [Fishshell](https://fishshell.com)
     - [Hyper](https://hyper.is)
     - [iTerm2](https://iterm2.com)
