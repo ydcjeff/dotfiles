@@ -65,4 +65,6 @@ git config --global color.ui true
 git config --global push.default simple
 
 echo 'source ~/.dotfiles/bash/.bash_profile' >> ~/.bash_profile
+echo 'source ~/.dotfiles/zsh/.zprofile' >> ~/.zshrc
 source ~/.bash_profile
+source ~/.zshrc

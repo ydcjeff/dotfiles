@@ -1,0 +1,12 @@
+fs      		file size in bytes
+md      		mkdir and enter it
+clean  			remove everything in current dir
+extract			extract archived files
+
+mark 			mark [dir] to ~/.mark
+marks			list of mark
+unmark			unmakr [dir] from ~/.mark
+j			jump into [dir]
+
+dds			delete .DS_Store
+nodemodules		delete node_modules

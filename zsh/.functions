@@ -20,7 +20,7 @@ if [[ ! "$SSH_TTY" && "$OSTYPE" =~ ^darwin ]]; then
         local cur=${COMP_WORDS[COMP_CWORD]}
         COMPREPLY=( $(compgen -W "$( ls $MARKPATH )" -- $cur) )
     }
-    complete -F _jump j unmark
+    compctl -K _jump j unmark
 else
     _completemarks() {
         local curw=${COMP_WORDS[COMP_CWORD]}
@@ -28,7 +28,7 @@ else
         COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
         return 0
     }
-    complete -F _completemarks j unmark
+    compctl -K _completemarks j unmark
 fi
 
 function mark { 

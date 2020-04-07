@@ -1,7 +1,7 @@
 # Personal dotfiles
 - Terminal
 	- Bash
-    - [Fishshell](https://fishshell.com)
+    - zsh
     - [Hyper](https://hyper.is)
     - [iTerm2](https://iterm2.com)
 - VSCode Settings
