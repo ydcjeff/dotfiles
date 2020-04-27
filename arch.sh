@@ -8,7 +8,7 @@ mkfs.ext4 /dev/sda1
 
 pacman -Syy
 
-pacman -S reflector
+pacman -S reflector git
 
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 
@@ -51,7 +51,3 @@ pacman -S xorg xorg-server lightdm NetworkManager
 systemctl start lightdm.service
 systemctl enable lightdm.service
 systemctl enable NetworkManager.service
-
-exit
-
-shutdown now
