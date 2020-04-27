@@ -57,8 +57,8 @@ alias gt="git tag"
 alias gm="git merge"
 
 # SSG shortcuts
-alias vpd="vuepress dev"
-alias lab="cd ~/Personal/lab && subl . && vuepress dev"
+alias vpd="vuepress dev docs"
+alias blog="cd ~/Personal/zenx && subl . && yarn dev"
 
 # npm global shortcuts
 alias ygl="yarn global list"
@@ -72,7 +72,8 @@ alias pi="pip3 install"
 alias ps="python3 setup.py"
 alias psd="python3 setup.py develop"
 
-
+# contributions
+alias ptl="cd ~/PL-venv/pytorch-lightning"
 
 
 
