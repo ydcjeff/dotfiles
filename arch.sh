@@ -1,33 +1,37 @@
+
+# check for uefi mode
+ls /sys/firmware/efi/efivars
+
+ip link
+
+timedatectl set-ntp true
+
 fdisk -l
 
 fdisk /dev/sda
 
-ls /sys/firmware/efi/efivars
-
 mkfs.ext4 /dev/sda1
-
-pacman -Syy
-
-pacman -S reflector git
-
-cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
-
-reflector -c "US" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist
+mkswap /dev/sda2
+swapon /dev/sda2
 
 mount /dev/sda1 /mnt
 
-pacstrap /mnt base linux linux-firmware vim nano make
+pacstrap /mnt base base-devel linux linux-firmware vim nano make dhcpcd man-db man-pages texinfo
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
 arch-chroot /mnt
 
-timedatectl list-timezones
+ln -sf /usr/share/zoneinfo/Asia/Yangon /etc/localtime
 
-timedatectl set-timezone Asia/Yangon
+hwclock --systohc
+
+nano /etc/locale.gen
 
 locale-gen
+
 echo LANG=en_US.UTF-8 > /etc/locale.conf
+
 export LANG=en_US.UTF-8
 
 echo jeff > /etc/hostname
@@ -40,14 +44,10 @@ useradd -m jeff
 
 passwd jeff
 
-pacman -S grub
+pacman -S grub intel-ucode amd-ucode coreutils tar less findutils diffutils grep gawk util-linux procps-ng file fzf
 
 grub-install /dev/sda
 
 grub-mkconfig -o /boot/grub/grub.cfg
 
-pacman -S xorg xorg-server lightdm NetworkManager
-
-systemctl start lightdm.service
-systemctl enable lightdm.service
-systemctl enable NetworkManager.service
+pacman -S xorg xorg-server xorg-xinit networkmanager firefox pulseaudio ffmpeg

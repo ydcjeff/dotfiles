@@ -1,6 +1,7 @@
 # make in case they aren't already there
 mkdir -p "/usr/local/lib"
 mkdir -p "/usr/local/bin"
+mkdir -p "/usr/share/xsessions"
 
 # upgrade the system
 sudo dnf upgrade
@@ -58,7 +59,7 @@ curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yu
 
 sudo dnf install yarn fish python3 python3-wheel python3-pip
 
-sudo cp -Rv ~/.dotfiles/hyper/.hyper.js ~/.hyper.js
+sudo cp -Rv ~/.dotfiles/hyper/.hyper.js ~/.hyper.js ~/.dotfiles/dwm.desktop /usr/share/xsessions/dwm.desktop
 
 # Some git defaults
 git config --global color.ui true
