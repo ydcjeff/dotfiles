@@ -49,7 +49,7 @@ export LSCOLORS=ExGxdxDxCxegedhbadaced
 alias ls="ls -1F"
 
 # set default editor
-export EDITOR='code'
+export EDITOR='subl'
 export VISUAL="$EDITOR"
 
 # recursively delete .DS_Store

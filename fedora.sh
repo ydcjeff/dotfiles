@@ -1,14 +1,13 @@
 # make in case they aren't already there
 mkdir -p "/usr/local/lib"
 mkdir -p "/usr/local/bin"
-mkdir -p "/usr/share/xsessions"
 
 # upgrade the system
 sudo dnf upgrade
 
 # Install common software
 echo -e "\nDownloading Chrome...\n"
-curl -L https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm --output Chrome.rpm
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
 
 echo -e "\nInstalling Brave...\n"
 sudo dnf install dnf-plugins-core
@@ -20,8 +19,8 @@ sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
 sudo dnf install brave-browser
 
 echo -e "\nInstalling Telegram...\n"
-curl -L https://updates.tdesktop.com/tlinux/tsetup.1.9.21.tar.xz --output telegram.tar.xz
-tar -zxf telegram.tar.xz
+wget https://updates.tdesktop.com/tlinux/tsetup.1.9.21.tar.xz
+tar -zxf tsetup.1.9.21.tar.xz
 
 echo -e "\nInstalling balenaEtcher...\n"
 sudo wget https://balena.io/etcher/static/etcher-rpm.repo -O /etc/yum.repos.d/etcher-rpm.repo
@@ -29,7 +28,7 @@ sudo wget https://balena.io/etcher/static/etcher-rpm.repo -O /etc/yum.repos.d/et
 sudo dnf install -y balena-etcher-electron
 
 echo -e "\nInstalling Nodejs...\n"
-sudo dnf install nodejs
+sudo dnf install nodejs fzf
 
 echo -e "\nInstalling Starship shell theme...\n"
 curl -fsSL https://starship.rs/install.sh | bash
@@ -43,29 +42,29 @@ xdg-open https://code.visualstudio.com/
 xdg-open https://hyper.is/
 
 echo -e "\nInstalling Git"
-sudo dnf install git-all
+sudo dnf install git-all bat
 
 # install common used font
 echo -e "\nDownloading Hack font...\n"
 curl -L https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.tar.gz --output hack.tar.gz
 tar -zxf hack.tar.gz
 
-sudo cp -Rv ~/ttf/Hack-Regular.ttf ~/usr/share/fonts/
+sudo cp -Rv ~/.config/ttf/*.ttf /usr/share/fonts/
 fc-cache -f -v
 fc-list | grep "Hack"
 
-# Install and use latest yarn, hugo and fish shell
+# Install and use latest yarn
 curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
 
-sudo dnf install yarn fish python3 python3-wheel python3-pip
+sudo dnf install yarn python3 python3-wheel python3-pip neofetch
 
-sudo cp -Rv ~/.dotfiles/hyper/.hyper.js ~/.hyper.js ~/.dotfiles/dwm.desktop /usr/share/xsessions/dwm.desktop
+sudo cp -Rv ~/.config/hyper/.hyper.js ~/.hyper.js
 
 # Some git defaults
 git config --global color.ui true
 git config --global push.default simple
 
-echo 'source ~/.dotfiles/bash/.bash_profile' >> ~/.bash_profile
-echo 'source ~/.dotfiles/zsh/.zprofile' >> ~/.zshrc
+echo 'source ~/.config/bash/.bash_profile' >> ~/.bash_profile
+echo 'source ~/.config/zsh/.zprofile' >> ~/.zshrc
 source ~/.bash_profile
 source ~/.zshrc

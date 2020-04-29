@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Configs for my VPS
-echo 'Fedora profile loaded.'
+echo 'Linux profile loaded.'
 
 # set default editor
 export EDITOR='code'

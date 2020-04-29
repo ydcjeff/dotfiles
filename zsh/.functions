@@ -1,46 +1,22 @@
-#!/bin/bash
+#!/bin/zsh
 
-# Jeroen Janssens' jumper functions
-# http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html
-# with some modifications: completion, show marks if no args given, make marks work on OS X 10.8.
-# https://github.com/yyx990803/dotfiles/blob/master/bash/.functions
+function fo() (
+  IFS=$'\n' out=("$(fzf --height 60% --layout reverse --info inline --border \
+    --preview 'bat -n --color=always {}'\
+    --color 'fg:#bbccdd,fg+:#ddeeff,bg:#334455,preview-bg:#223344,border:#778899' \
+    --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)")
+  key=$(head -1 <<< "$out")
+  file=$(head -2 <<< "$out" | tail -1)
+  if [ -n "$file" ]; then
+    [ "$key" = ctrl-o ] && open "$file" || ${EDITOR} "$file"
+  fi
+)
 
-export MARKPATH=$HOME/.marks
-
-function j {
-    if [ -z "$1" ]; then
-        marks
-    else
-        cd -P $MARKPATH/$1 2>/dev/null || echo "No such mark: $1"
-    fi
-}
-
-if [[ ! "$SSH_TTY" && "$OSTYPE" =~ ^darwin ]]; then
-    function _jump() {
-        local cur=${COMP_WORDS[COMP_CWORD]}
-        COMPREPLY=( $(compgen -W "$( ls $MARKPATH )" -- $cur) )
-    }
-    compctl -K _jump j unmark
-else
-    _completemarks() {
-        local curw=${COMP_WORDS[COMP_CWORD]}
-        local wordlist=$(find $MARKPATH -type l -printf "%f\n")
-        COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
-        return 0
-    }
-    compctl -K _completemarks j unmark
-fi
-
-function mark { 
-    mkdir -p $MARKPATH; ln -s $(pwd) $MARKPATH/$1
-}
-
-function unmark { 
-    rm -i $MARKPATH/$1 
-}
-
-function marks {
-    ls -l $MARKPATH | sed 's/  / /g' | cut -d' ' -f9- && echo
+function fcd() {
+  local dir
+  dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m --height 40% --layout reverse --info inline --border \
+    --color 'fg:#bbccdd,fg+:#ddeeff,bg:#334455,preview-bg:#223344,border:#778899'
+) && cd "$dir"
 }
 
 # Create a new directory and enter it
@@ -71,7 +47,7 @@ function port() {
 # Description: extracts archived files / mounts disk images
 # Note: .dmg/hdiutil is Mac OS X-specific.
 
-x () {
+ex () {
     if [ -f $1 ]; then
         case $1 in
             *.tar.bz2)  tar -jxvf $1                        ;;

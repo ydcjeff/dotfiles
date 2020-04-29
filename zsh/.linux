@@ -1,10 +1,10 @@
 #!/bin/zsh
 
 # Configs for my VPS
-echo 'Fedora profile loaded.'
+echo 'Linux profile loaded.'
 
 # set default editor
-export EDITOR='code'
+export EDITOR='subl'
 export VISUAL="$EDITOR"
 
 # enable ls colors
@@ -17,4 +17,4 @@ alias dds="find . -name '*.DS_Store' -type f -ls -delete"
 alias nodemodules="find . -name "node_modules" -exec rm -rf '{}' +"
 
 # hint for these shortcuts
-alias hint="echo; cat $BASH_SRC_PATH/.hints; echo; echo"
+alias hint="echo; cat $ZSH_SRC_PATH/.hints; echo; echo"

@@ -1,0 +1,19 @@
+add_newline = true
+
+scan_timeout = 10
+
+[character]
+symbol = "▲"
+use_symbol_for_status = true
+
+[package]
+disabled = false
+
+[[battery.display]]
+threshold = 30
+style = "bold yellow"
+
+[memory_usage]
+show_percentage = true
+threshold = 10
+style = "bold dimmed green"

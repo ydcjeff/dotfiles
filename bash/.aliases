@@ -23,15 +23,15 @@ alias yde="yarn dev-example"
 alias ybe="yarn build-example"
 
 # apt shortcuts (Debian / Ubuntu)
-alias ai="sudo apt install"
-alias arm="sudo apt remove"
-alias ap="sudo apt purge"
-alias aud="sudo apt update"
-alias aug="sudo apt upgrade"
-alias aarm="sudo apt autoremove"
-alias afug="sudo apt full-upgrade"
-alias as="sudo apt search"
-alias ash="sudo apt show"
+# alias ai="sudo apt install"
+# alias arm="sudo apt remove"
+# alias ap="sudo apt purge"
+# alias aud="sudo apt update"
+# alias aug="sudo apt upgrade"
+# alias aarm="sudo apt autoremove"
+# alias afug="sudo apt full-upgrade"
+# alias as="sudo apt search"
+# alias ash="sudo apt show"
 
 # dnf shortcuts (Fedora)
 alias di="sudo dnf install"
@@ -42,6 +42,12 @@ alias dug="sudo dnf upgrade"
 alias darm="sudo dnf autoremove"
 alias dif="sudo dnf info"
 alias dri="sudo dnf reinstall"
+
+#pacman shortcuts
+alias paci="sudo pacman -S"
+alias pacu="sudo pacman -Syyu"
+alias pacr="sudo pacman -Rs"
+alias pacq="sudo pacman -Q"
 
 # git shortcuts
 alias gs="git status"
@@ -58,7 +64,7 @@ alias gm="git merge"
 
 # SSG shortcuts
 alias vpd="vuepress dev"
-alias lab="cd ~/Personal/lab && subl . && vuepress dev"
+alias blog="cd ~/Personal/blog && subl . && yarn dev"
 
 # npm global shortcuts
 alias ygl="yarn global list"

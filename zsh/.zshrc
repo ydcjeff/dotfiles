@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-# export STARSHIP_CONFIG=~/.dotfiles
-
 # starship theme
 eval "$(starship init zsh)"
 
