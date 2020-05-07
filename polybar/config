@@ -1,0 +1,257 @@
+[colors]
+red = #ee4c2c
+mint = #98ff98
+yellow = #ff6f00
+blue = #0F38F2
+cyan = #4fc08d
+white = #eee
+background = #292d3e
+foreground = #d0d0d0
+
+[bar/arch]
+enable-ipc = true
+width = 100%
+height = 24
+fixed-center = false
+
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 0
+line-color = {$xrdb:red}
+
+border-size = 0
+border-color = ${colors.white}
+
+padding = 0
+
+module-margin = 2
+
+font = "Roboto Mono:pixelsize=10";2
+
+modules-left = bspwm
+modules-center = mpd
+modules-right = alsa backlight battery cpu date memory wlan eth powermenu xkeyboard xbacklight
+
+dim-value = 1.0
+
+tray-position = right
+tray-detached = false
+tray-maxsize = 22
+tray-padding = 0
+tray-background = ${colors.background}
+
+[global/wm]
+margin-bottom = 0
+margin-top = 0
+
+[settings]
+throttle-output = 5
+throttle-output-for = 10
+throttle-input-for = 30
+
+pseudo-transparency = true
+
+[module/alsa]
+type = internal/alsa
+
+master-soundcard = default
+speaker-soundcard = default
+headphone-soundcard = default
+
+master-mixer = Master
+speaker-mixer = Speaker
+headphone-mixer = Headphone
+
+format-volume = <label-volume> <bar-volume>
+format-muted = <label-muted>
+label-volume = %percentage%%
+
+label-muted = 
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+
+ramp-headphones-0 = 
+
+[module/backlight]
+type = internal/backlight
+
+card = intel_backlight
+enable-scroll = true
+
+format = <label>
+label = %percentage%%
+
+ramp-0 = 🌕
+ramp-1 = 🌔
+ramp-2 = 🌓
+ramp-3 = 🌒
+ramp-4 = 🌑
+
+bar-width = 10
+bar-indicator = |
+bar-fill = ─
+bar-empty = ─
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+
+format-discharging = <ramp-capacity> <label-discharging>
+
+format-full = <animation-charging> <label-full>
+
+label-charging = %percentage%
+label-discharging = %percentage%
+label-full = %percentage%
+
+ramp-capacity = 
+
+animation-charging = 
+
+[module/bspwm]
+type = internal/bspwm
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+label = CPU: %percentage%
+format = <label>
+
+[module/date]
+type = internal/date
+interval = 60
+
+date = %Y-%m-%d%
+time = %H:%M
+
+format =  <label>
+label = %date% %time%
+
+[module/memory]
+type = internal/memory
+interval = 60
+format = <label>
+label = RAM: %gb_used%/%gb_total%
+
+[module/mpd]
+type = internal/mpd
+format-offline = <label-offline>
+format-online = <icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>  <icon-repeat> <icon-random>  <bar-progress> <label-time>  <label-song>
+
+click-left = $TERMINAL -e ncmpcpp
+click-right = mpc toggle
+
+label-offline = MPD is offline
+label-song = %artist% - %title%
+label-song-maxlen = 70
+label-song-ellipsis = true
+label-time = %elapsed% / %total%
+
+icon-play = 
+icon-pause = 
+icon-stop = 
+icon-prev = 
+icon-next = 
+icon-seekb = 
+icon-seekf = 
+icon-random = 
+icon-repeat = 
+icon-repeatone = 
+icon-single = 
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 3.0
+
+format-connected =  <label-connected>
+label-connected = %essid% %signal%
+
+format-disconnected = 
+
+[module/eth]
+type = internal/network
+interface = enp0s25
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+label-connected = %ifname% %linkspeed%
+
+format-disconnected = <label-disconnected>
+label-disconnected = %ifname% Disconnected
+
+ramp-signal-0 = 😱
+ramp-signal-1 = 😠
+ramp-signal-2 = 😒
+ramp-signal-3 = 😊
+ramp-signal-4 = 😃
+ramp-signal-5 = 😈
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = %percentage%
+
+ramp-0 = 🌕
+ramp-1 = 🌔
+ramp-2 = 🌓
+ramp-3 = 🌒
+ramp-4 = 🌑
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #ff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.gray}
+
+[module/xkeyboard]
+type = internal/xkeyboard
+
+blacklist-0 = num lock
+blacklist-1 = scroll lock
+format = <label-layout>
+format-spacing = 0
+label-layout = %name%
+label-layout-padding = 2
+
+[module/powermenu]
+type = custom/menu
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.darkmagenta}
+label-close =  cancel
+label-close-foreground = ${colors.darkmagenta}
+label-separator = |
+label-separator-foreground = ${colors.gray}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
