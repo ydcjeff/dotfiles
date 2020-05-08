@@ -1,52 +1,43 @@
 [colors]
-red = #ee4c2c
-mint = #98ff98
-yellow = #ff6f00
-blue = #0F38F2
-cyan = #4fc08d
-white = #eee
-background = #292d3e
-foreground = #d0d0d0
+foreground = #292d3e
 
 [bar/arch]
 enable-ipc = true
 width = 100%
-height = 24
+height = 20
 fixed-center = false
 
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
 
-background = ${colors.background}
+background = rgba(0, 0, 0, 0)
 foreground = ${colors.foreground}
 
 line-size = 0
-line-color = {$xrdb:red}
-
 border-size = 0
-border-color = ${colors.white}
 
-padding = 0
+padding = 5
 
-module-margin = 2
+module-margin = 5
 
-font = "Roboto Mono:pixelsize=10";2
+font = "Roboto Mono:pixelsize=10";5
 
 modules-left = bspwm
 modules-center = date
-modules-right = alsa battery cpu date memory eth powermenu
+modules-right = alsa battery cpu memory network
 
 dim-value = 1.0
 
 tray-position = right
 tray-detached = false
 tray-maxsize = 22
-tray-padding = 0
-tray-background = ${colors.background}
+tray-padding = 5
+
+dpi = 0
 
 [global/wm]
-margin-bottom = 0
-margin-top = 0
+margin-bottom = 5
+margin-top = 5
 
 [settings]
 throttle-output = 5
@@ -54,6 +45,8 @@ throttle-output-for = 10
 throttle-input-for = 30
 
 pseudo-transparency = true
+format-padding = 5
+format-margin = 5
 
 [module/alsa]
 type = internal/alsa
@@ -66,18 +59,25 @@ master-mixer = Master
 speaker-mixer = Speaker
 headphone-mixer = Headphone
 
+headphone-id = 9
+
 format-volume = <ramp-volume> <label-volume>
 format-muted = <label-muted>
-label-volume = %percentage%
 
-label-muted = 
+format-volume-background = #D34F57
+format-volume-foreground = ${colors.foreground}
 
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
+format-muted-background = #D34F57
+format-muted-foreground = ${colors.foreground}
 
-ramp-headphones-0 = 
-headphone-id = 9
+label-volume = %percentage%%
+label-muted = V: []
+
+ramp-volume-0 = V: [=]
+ramp-volume-1 = V: [==]
+ramp-volume-2 = V: [===]
+ramp-volume-3 = V: [====]
+ramp-volume-4 = V: [=====]
 
 [module/battery]
 type = internal/battery
@@ -86,106 +86,86 @@ adapter = ADP1
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-
 format-discharging = <animation-discharging> <label-discharging>
 
-format-full = <animation-charging> <label-full>
-
-label-charging = %percentage%
-label-discharging = %percentage%
-label-full = %percentage%
-
-bar-capacity-width = 10
+label-charging = %percentage%%
+label-discharging = %percentage%%
 
 animation-charging-0 = [#]
 animation-charging-1 = [##]
 animation-charging-2 = [###]
 animation-charging-3 = [####]
 animation-charging-4 = [#####]
-animation-charging-framerate = 750
+animation-charging-framerate = 1000
 
 animation-discharging-0 = [#####]
 animation-discharging-1 = [####]
 animation-discharging-2 = [###]
 animation-discharging-3 = [##]
 animation-discharging-4 = [#]
-animation-discharging-framerate = 500
+animation-discharging-framerate = 1000
 
 [module/bspwm]
 type = internal/bspwm
 
+label-background = ${colors.foreground}
+label-focused-underline = #2375FA
+
+label-separator = •
+label-separator-padding = 5
+label-separator-foreground = #d0d0d0
+
 [module/cpu]
 type = internal/cpu
-interval = 2
-label =  %percentage%
-format = <label>
+interval = 1
+
+format = <label> <ramp-load>
+label = CPU: %percentage%%
+
+ramp-load-0 = [-]
+ramp-load-1 = [--]
+ramp-load-2 = [---]
+ramp-load-3 = [----]
+ramp-load-4 = [-----]
 
 [module/date]
 type = internal/date
 interval = 60
 
-date = %Y-%m-%d%
+date = %A %m %d
 time = %H:%M
 
 format = <label>
+format-background = #69B6AB
+format-foreground = ${colors.foreground}
+
 label = %date% %time%
 
 [module/memory]
 type = internal/memory
 interval = 60
+
 format = <label>
-label =  %gb_used%/%gb_total%
+label = RAM: %gb_used%/%gb_total%
 
-[module/wlan]
+[module/network]
 type = internal/network
-interface = wlp3s0
-interval = 3.0
-
-format-connected =  <label-connected>
-label-connected = %essid% %signal%
-
-format-disconnected = No Wifi
-
-[module/eth]
-type = internal/network
+;interface = wlp3s0
 interface = enp0s25
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-label-connected = %ifname% %linkspeed%
+format-connected-foreground = ${colors.foreground}
+format-connected-background = #DF59C9
 
 format-disconnected = <label-disconnected>
-label-disconnected = %ifname% Disconnected
+format-disconnected-foreground = ${colors.foreground}
+format-disconnected-background = #DF59C9
+
+label-connected = %essid% %signal%
 
 ramp-signal-0 = [*]
 ramp-signal-1 = [**]
 ramp-signal-2 = [***]
 ramp-signal-3 = [****]
 ramp-signal-4 = [*****]
-
-[module/powermenu]
-type = custom/menu
-
-format-spacing = 1
-
-label-open = 
-label-open-foreground = ${colors.cyan}
-label-close =  cancel
-label-close-foreground = ${colors.cyan}
-label-separator = |
-label-separator-foreground = ${colors.background}
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
