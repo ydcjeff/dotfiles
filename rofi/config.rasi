@@ -6,7 +6,8 @@ configuration {
 }
 
 * {
-    background-color: #292d3e;
+    background-color: transparent;
+    transparent: rgba(0,0,0,0);
     color: #d0d0d0;
     font: "Roboto Mono 12";
 }
