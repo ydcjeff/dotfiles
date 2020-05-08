@@ -1,36 +1,76 @@
 [colors]
 foreground = #292d3e
 
-[bar/arch]
+[bar/top]
 enable-ipc = true
 width = 100%
-height = 20
+height = 25
 fixed-center = false
 
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
 
 background = rgba(0, 0, 0, 0)
-foreground = ${colors.foreground}
+foreground = #d0d0d0
 
-line-size = 0
+line-size = 1
+line-color = #4fc08d
+
 border-size = 0
 
 padding = 1
 
 module-margin = 1
 
-font = "Roboto Mono:pixelsize=10";5
+font-0 = Roboto Mono:style=Regular:pixelsize=12;5
 
-modules-left = bspwm
-modules-center = date
+modules-left = date
+modules-center = 
 modules-right = alsa battery cpu memory network
 
 dim-value = 1.0
 
 tray-position = right
 tray-detached = false
-tray-maxsize = 22
+tray-maxsize = 25
+tray-padding = 0
+
+dpi = 0
+
+[bar/bottom]
+enable-ipc = true
+width = 100%
+height = 25
+fixed-center = false
+
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+
+background = rgba(0, 0, 0, 0)
+foreground = #d0d0d0
+
+line-size = 1
+line-color = #4fc08d
+
+border-size = 0
+
+padding = 1
+
+module-margin = 1
+
+font-0 = Roboto Mono:style=Regular:pixelsize=12;5
+
+modules-left = bspwm
+modules-center = 
+modules-right = 
+
+dim-value = 1.0
+
+bottom = true
+
+tray-position = right
+tray-detached = false
+tray-maxsize = 25
 tray-padding = 0
 
 dpi = 0
@@ -54,19 +94,19 @@ speaker-soundcard = default
 headphone-soundcard = default
 
 master-mixer = Master
-speaker-mixer = Speaker
-headphone-mixer = Headphone
+;speaker-mixer = Speaker
+;headphone-mixer = Headphone
 
-headphone-id = 9
+;headphone-id = 9
 
 format-volume = <ramp-volume> <label-volume>
 format-muted = <label-muted>
 
-format-volume-background = #D34F57
-format-volume-foreground = ${colors.foreground}
+;format-volume-background = #D34F57
+;format-volume-foreground = ${colors.foreground}
 
-format-muted-background = #D34F57
-format-muted-foreground = ${colors.foreground}
+;format-muted-background = #D34F57
+;format-muted-foreground = ${colors.foreground}
 
 label-volume = %percentage%%
 label-muted = V: []
@@ -105,33 +145,42 @@ ramp-capacity-4 = B: [#####]
 [module/bspwm]
 type = internal/bspwm
 
-label-background = ${colors.foreground}
-label-focused-underline = #2375FA
-label-separator-foreground = #d0d0d0
+label-focused = %index%
+label-focused-overline = #4fc08d
+label-focused-padding = 1
+
+label-occupied = %index%
+label-occupied-padding = 1
+
+label-urgent = %index%
+label-urgent-padding = 1
+
+label-empty = %index%
+label-empty-padding = 1
 
 [module/cpu]
 type = internal/cpu
 interval = 1
 
-format = <label> <ramp-load>
-label = CPU: %percentage%%
+format = <ramp-load> <label>
+label = %percentage%%
 
-ramp-load-0 = [-]
-ramp-load-1 = [--]
-ramp-load-2 = [---]
-ramp-load-3 = [----]
-ramp-load-4 = [-----]
+ramp-load-0 = CPU: [-]
+ramp-load-1 = CPU: [--]
+ramp-load-2 = CPU: [---]
+ramp-load-3 = CPU: [----]
+ramp-load-4 = CPU: [-----]
 
 [module/date]
 type = internal/date
 interval = 60
 
-date = %A %m %d
+date = %A %b %d
 time = %H:%M
 
 format = <label>
-format-background = #69B6AB
-format-foreground = ${colors.foreground}
+;format-background = #69B6AB
+;format-foreground = ${colors.foreground}
 
 label = %date% %time%
 
@@ -139,24 +188,30 @@ label = %date% %time%
 type = internal/memory
 interval = 60
 
-format = <label>
-label = RAM: %gb_used%/%gb_total%
+format = <ramp-used> <label>
+label = %gb_used%
+
+ramp-used-0 = RAM: [+]
+ramp-used-1 = RAM: [++]
+ramp-used-2 = RAM: [+++]
+ramp-used-3 = RAM: [++++]
+ramp-used-4 = RAM: [+++++]
 
 [module/network]
 type = internal/network
-;interface = wlp3s0
-interface = enp0s3
+interface = wlp4s0
+;interface = enp0s3
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-foreground = ${colors.foreground}
-format-connected-background = #DF59C9
+;format-connected-foreground = ${colors.foreground}
+;format-connected-background = #DF59C9
 
 format-disconnected = <label-disconnected>
-format-disconnected-foreground = ${colors.foreground}
-format-disconnected-background = #DF59C9
+;format-disconnected-foreground = ${colors.foreground}
+;format-disconnected-background = #DF59C9
 
-label-connected = %ifname% %downspeed% %upspeed%
+label-connected = %downspeed% %upspeed%
 
 ramp-signal-0 = [*]
 ramp-signal-1 = [**]
