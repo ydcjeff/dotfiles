@@ -2,7 +2,7 @@
 mkdir -p "/usr/local/lib"
 mkdir -p "/usr/local/bin"
 
-pacman -S gtk-engine-murrine gtk-engines git wget unzip compton unrar
+pacman -S gtk-engine-murrine gtk-engines git wget unzip compton unrar terminology
 
 git clone https://github.com/vinceliuice/vimix-gtk-themes.git ~/.vimix-gtk-themes
 cd ~/.vimix-gtk-themes && ./install.sh

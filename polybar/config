@@ -33,8 +33,8 @@ module-margin = 2
 font = "Roboto Mono:pixelsize=10";2
 
 modules-left = bspwm
-modules-center = mpd
-modules-right = alsa backlight battery cpu date memory wlan eth powermenu xkeyboard xbacklight
+modules-center = date
+modules-right = alsa battery cpu date memory eth powermenu
 
 dim-value = 1.0
 
@@ -66,36 +66,18 @@ master-mixer = Master
 speaker-mixer = Speaker
 headphone-mixer = Headphone
 
-format-volume = <label-volume> <bar-volume>
+format-volume = <ramp-volume> <label-volume>
 format-muted = <label-muted>
-label-volume = %percentage%%
+label-volume = %percentage%
 
-label-muted = 
+label-muted = 
 
-ramp-volume-0 = 
-ramp-volume-1 = 
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
 
-ramp-headphones-0 = 
-
-[module/backlight]
-type = internal/backlight
-
-card = intel_backlight
-enable-scroll = true
-
-format = <label>
-label = %percentage%%
-
-ramp-0 = 🌕
-ramp-1 = 🌔
-ramp-2 = 🌓
-ramp-3 = 🌒
-ramp-4 = 🌑
-
-bar-width = 10
-bar-indicator = |
-bar-fill = ─
-bar-empty = ─
+ramp-headphones-0 = 
+headphone-id = 9
 
 [module/battery]
 type = internal/battery
@@ -105,7 +87,7 @@ full-at = 98
 
 format-charging = <animation-charging> <label-charging>
 
-format-discharging = <ramp-capacity> <label-discharging>
+format-discharging = <animation-discharging> <label-discharging>
 
 format-full = <animation-charging> <label-full>
 
@@ -113,9 +95,21 @@ label-charging = %percentage%
 label-discharging = %percentage%
 label-full = %percentage%
 
-ramp-capacity = 
+bar-capacity-width = 10
 
-animation-charging = 
+animation-charging-0 = [#]
+animation-charging-1 = [##]
+animation-charging-2 = [###]
+animation-charging-3 = [####]
+animation-charging-4 = [#####]
+animation-charging-framerate = 750
+
+animation-discharging-0 = [#####]
+animation-discharging-1 = [####]
+animation-discharging-2 = [###]
+animation-discharging-3 = [##]
+animation-discharging-4 = [#]
+animation-discharging-framerate = 500
 
 [module/bspwm]
 type = internal/bspwm
@@ -123,7 +117,7 @@ type = internal/bspwm
 [module/cpu]
 type = internal/cpu
 interval = 2
-label = CPU: %percentage%
+label =  %percentage%
 format = <label>
 
 [module/date]
@@ -133,50 +127,24 @@ interval = 60
 date = %Y-%m-%d%
 time = %H:%M
 
-format =  <label>
+format = <label>
 label = %date% %time%
 
 [module/memory]
 type = internal/memory
 interval = 60
 format = <label>
-label = RAM: %gb_used%/%gb_total%
-
-[module/mpd]
-type = internal/mpd
-format-offline = <label-offline>
-format-online = <icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>  <icon-repeat> <icon-random>  <bar-progress> <label-time>  <label-song>
-
-click-left = $TERMINAL -e ncmpcpp
-click-right = mpc toggle
-
-label-offline = MPD is offline
-label-song = %artist% - %title%
-label-song-maxlen = 70
-label-song-ellipsis = true
-label-time = %elapsed% / %total%
-
-icon-play = 
-icon-pause = 
-icon-stop = 
-icon-prev = 
-icon-next = 
-icon-seekb = 
-icon-seekf = 
-icon-random = 
-icon-repeat = 
-icon-repeatone = 
-icon-single = 
+label =  %gb_used%/%gb_total%
 
 [module/wlan]
 type = internal/network
 interface = wlp3s0
 interval = 3.0
 
-format-connected =  <label-connected>
+format-connected =  <label-connected>
 label-connected = %essid% %signal%
 
-format-disconnected = 
+format-disconnected = No Wifi
 
 [module/eth]
 type = internal/network
@@ -189,45 +157,11 @@ label-connected = %ifname% %linkspeed%
 format-disconnected = <label-disconnected>
 label-disconnected = %ifname% Disconnected
 
-ramp-signal-0 = 😱
-ramp-signal-1 = 😠
-ramp-signal-2 = 😒
-ramp-signal-3 = 😊
-ramp-signal-4 = 😃
-ramp-signal-5 = 😈
-
-[module/xbacklight]
-type = internal/xbacklight
-
-format = <label> <bar>
-label = %percentage%
-
-ramp-0 = 🌕
-ramp-1 = 🌔
-ramp-2 = 🌓
-ramp-3 = 🌒
-ramp-4 = 🌑
-
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #ff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.gray}
-
-[module/xkeyboard]
-type = internal/xkeyboard
-
-blacklist-0 = num lock
-blacklist-1 = scroll lock
-format = <label-layout>
-format-spacing = 0
-label-layout = %name%
-label-layout-padding = 2
+ramp-signal-0 = [*]
+ramp-signal-1 = [**]
+ramp-signal-2 = [***]
+ramp-signal-3 = [****]
+ramp-signal-4 = [*****]
 
 [module/powermenu]
 type = custom/menu
@@ -235,11 +169,11 @@ type = custom/menu
 format-spacing = 1
 
 label-open = 
-label-open-foreground = ${colors.darkmagenta}
+label-open-foreground = ${colors.cyan}
 label-close =  cancel
-label-close-foreground = ${colors.darkmagenta}
+label-close-foreground = ${colors.cyan}
 label-separator = |
-label-separator-foreground = ${colors.gray}
+label-separator-foreground = ${colors.background}
 
 menu-0-0 = reboot
 menu-0-0-exec = menu-open-1
