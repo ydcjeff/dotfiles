@@ -61,6 +61,8 @@ alias gp="git push"
 alias gl="git pull"
 alias gt="git tag"
 alias gm="git merge"
+alias gf="git fetch"
+alias gr="git rebase"
 
 # SSG shortcuts
 alias vpd="vuepress dev"
