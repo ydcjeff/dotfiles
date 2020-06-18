@@ -25,7 +25,7 @@ echo "\nDownloading VirtualBox...\n"
 wget https://download.virtualbox.org/virtualbox/6.1.4/VirtualBox-6.1.4-136177-OSX.dmg
 
 echo "\nDownloading Nodejs...\n"
-wget https://nodejs.org/dist/v12.16.1/node-v12.16.1.pkg
+wget https://nodejs.org/dist/v12.18.1/node-v12.18.1.pkg
 
 echo "\nDownloading Starship shell theme...\n"
 curl -fsSL https://starship.rs/install.sh | bash
