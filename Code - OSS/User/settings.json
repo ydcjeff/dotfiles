@@ -1,17 +1,19 @@
 {
-    "workbench.iconTheme": "eq-material-theme-icons-palenight",
-    "debug.console.fontSize": 15,
-    "markdown.preview.fontSize": 15,
-    "terminal.integrated.fontSize": 15,
-    "editor.fontSize": 17,
-    "files.autoSave": "afterDelay",
-    "files.autoSaveDelay": 100,
-    "editor.formatOnSave": true,
-    "eslint.packageManager": "yarn",
-    "workbench.colorTheme": "Material Theme Palenight",
-    "editor.fontFamily": "'Hack', Menlo, Monaco, 'Courier New', monospace",
-    "terminal.integrated.shell.osx": "/usr/local/bin/bash",
-    "python.autoComplete.addBrackets": true,
-    "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
+  "workbench.iconTheme": "eq-material-theme-icons-palenight",
+  "workbench.colorTheme": "One Dark Pro",
+  "files.autoSave": "afterDelay",
+  "window.zoomLevel": 0,
+  "editor.fontSize": 16,
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "editor.formatOnSave": true,
+  "terminal.integrated.inheritEnv": false,
+  "editor.fontFamily": "'Hack', Menlo, Monaco, 'Courier New', monospace",
+  "editor.renderWhitespace": "boundary",
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.suggestSelection": "first"
 }
