@@ -27,3 +27,7 @@ Code - OSS/User/workspaceStorage
 mimeapps.list
 nautilus
 sublime-text-3
+dask
+gh
+tensorboard
+wandb
