@@ -3,7 +3,7 @@
 # COLORS
 # https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit
 
-set -e
+# set -e
 
 export TERM=xterm-256color
 RESET=$(tput sgr0)
