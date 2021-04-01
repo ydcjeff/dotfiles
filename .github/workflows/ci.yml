@@ -11,7 +11,7 @@ jobs:
     container: archlinux
     steps:
       - uses: actions/checkout@v2
-      - run: sudo pacman -Syu git
+      - run: pacman -Syu git sudo
       - run: sh setup.sh
 
   mac:
