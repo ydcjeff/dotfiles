@@ -98,7 +98,7 @@ setup_archlinux() {
     xfce4-screenshooter \
 
   echo "${YELLOW}==> download Hack font${RESET}"
-  curl -L https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.tar.gz --output hack.tar.gz
+  curl -fsSL https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.tar.gz --output hack.tar.gz
   tar -xzvf hack.tar.gz
   sudo cp -Rv ~/.config/ttf/*.ttf /usr/share/fonts/
   fc-cache -f -v
@@ -111,7 +111,7 @@ install_starship() {
   echo "${YELLOW}==> Starship installation${RESET}"
 
   if test ! $(which starship); then
-    curl -fsSL https://starship.rs/install.sh
+    curl -fsSL https://starship.rs/install.sh --output install.sh
     sh install.sh -y
     echo "${GREEN}==> Starship ${INSTALL_DONE}${RESET}"
   else
