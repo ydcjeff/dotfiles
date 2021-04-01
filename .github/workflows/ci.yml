@@ -9,6 +9,8 @@ jobs:
   linux:
     runs-on: ubuntu-latest
     container: archlinux:base-devel
+    env:
+      SHELL: ${{ matrix.shell }}
     strategy:
       fail-fast: false
       matrix:
@@ -20,6 +22,8 @@ jobs:
 
   mac:
     runs-on: macos-latest
+    env:
+      SHELL: ${{ matrix.shell }}
     strategy:
       fail-fast: false
       matrix:

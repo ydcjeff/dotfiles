@@ -3,6 +3,8 @@
 # COLORS
 # https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit
 
+set -e
+
 export TERM=xterm-256color
 RESET=$(tput sgr0)
 RED=$(tput setaf 9)
@@ -112,7 +114,8 @@ install_starship() {
 
   if test ! $(which starship); then
     curl -fsSL https://starship.rs/install.sh --output install.sh
-    sh install.sh -y
+    chmod +x install.sh
+    install.sh -y
     echo "${GREEN}==> Starship ${INSTALL_DONE}${RESET}"
   else
     echo "${CYAN}==> $(starship -V) ${EXIST}${RESET}"
