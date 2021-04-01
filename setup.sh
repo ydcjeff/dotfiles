@@ -72,12 +72,15 @@ setup_macos() {
 
 setup_archlinux() {
   echo "${YELLOW}==> Arch Linux setup${RESET}"
+
+  sudo pacman-key --init
   echo "${YELLOW}==> add sublime text and merge repo${RESET}"
 
   curl -O https://download.sublimetext.com/sublimehq-pub.gpg && \
   sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg
   echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
 
+  sudo pacman -Syu --noconfirm --color always sublime-text sublime-merge
   sudo pacman -Syu --noconfirm --color always \
     git \
     wget \
@@ -86,8 +89,6 @@ setup_archlinux() {
     telegram-desktop \
     nodejs \
     npm \
-    sublime-text \
-    sublime-merge \
     code \
     python \
     python-pip \
@@ -110,7 +111,8 @@ install_starship() {
   echo "${YELLOW}==> Starship installation${RESET}"
 
   if test ! $(which starship); then
-    curl -fsSL https://starship.rs/install.sh | bash
+    curl -fsSL https://starship.rs/install.sh
+    sh install.sh -y
     echo "${GREEN}==> Starship ${INSTALL_DONE}${RESET}"
   else
     echo "${CYAN}==> $(starship -V) ${EXIST}${RESET}"
