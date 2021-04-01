@@ -60,15 +60,13 @@ setup_macos() {
     https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.tar.gz
   )
 
-  if test ! ${GITHUB_TOKEN}; then
-    for l in ${links[@]}
-    do
-      echo "${GREEN}==> opening ${l}${RESET}"
-      open ${l}
-      sleep 3
-    done
-    echo "${GREEN}==> macOS setup complete${RESET}"
-  fi
+  for l in ${links[@]}
+  do
+    echo "${GREEN}==> opening ${l}${RESET}"
+    open ${l}
+    sleep 3
+  done
+  echo "${GREEN}==> macOS setup complete${RESET}"
 }
 
 setup_archlinux() {
@@ -138,6 +136,7 @@ source_dot_files() {
 
 main() {
   clone_dotfiles
+  cd .dotfiles
   git submodule update --init --recursive
 
   if [ $(uname) = "Darwin" ]; then
