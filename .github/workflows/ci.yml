@@ -8,7 +8,7 @@ on:
 jobs:
   linux:
     runs-on: ubuntu-latest
-    container: archlinux
+    container: archlinux:base-devel
     steps:
       - uses: actions/checkout@v2
       - run: pacman -Syu git sudo --color always --noconfirm
