@@ -114,7 +114,7 @@ install_starship() {
   echo "${YELLOW}==> Starship installation${RESET}"
 
   if test ! $(which starship); then
-    curl -fsSL https://starship.rs/install.sh | bash | yes
+    curl -fsSL https://starship.rs/install.sh | bash
     echo "${GREEN}==> Starship ${INSTALL_DONE}${RESET}"
   else
     echo "${CYAN}==> $(starship -V) ${EXIST}${RESET}"
