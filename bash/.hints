@@ -1,7 +1,0 @@
-fs      		file size in bytes
-md      		mkdir and enter it
-clean  			remove everything in current dir
-extract			extract archived files
-
-dds			delete .DS_Store
-nodemodules		delete node_modules
