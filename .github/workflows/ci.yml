@@ -9,6 +9,9 @@ jobs:
   linux:
     runs-on: ubuntu-latest
     container: archlinux:base-devel
+    defaults:
+      run:
+        shell: ${{ matrix.shell }}
     env:
       SHELL: ${{ matrix.shell }}
     strategy:
@@ -22,6 +25,9 @@ jobs:
 
   mac:
     runs-on: macos-latest
+    defaults:
+      run:
+        shell: ${{ matrix.shell }}
     env:
       SHELL: ${{ matrix.shell }}
     strategy:
