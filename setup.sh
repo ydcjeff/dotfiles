@@ -1,11 +1,12 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 # COLORS
 # https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit
 
-set -e
+set -eo pipefail
 
 export TERM=xterm-256color
+
 RESET=$(tput sgr0)
 RED=$(tput setaf 9)
 GREEN=$(tput setaf 10)
@@ -13,37 +14,51 @@ YELLOW=$(tput setaf 11)
 BLUE=$(tput setaf 12)
 PURPLE=$(tput setaf 13)
 CYAN=$(tput setaf 14)
-INSTALL_DONE="installation done"
-EXIST="exist, not installing"
+
+info() {
+  printf "%s\n" "${CYAN}> $*${RESET}"
+}
+
+warn() {
+  printf "%s\n" "${YELLOW}! $*${RESET}"
+}
+
+error() {
+  printf "%s\n" "${RED}x $*${RESET}"
+}
+
+success() {
+  printf "%s\n" "${GREEN}✔ $*${RESET}"
+}
 
 clone_dotfiles() {
-  echo "${YELLOW}==> Clone .dotfiles repo"
+  info "Clone .dotfiles repo"
   if [ -d ~/.dotfiles ]; then
-    echo "${CYAN}==> .dotfiles dir exist, not cloning${RESET}"
+    info ".dotfiles dir exist, not cloning"
   else
-    git clone https://github.com/ydcjeff/dotfiles ~/.dotfiles
-    echo "${GREEN}==> cloned .dotfiles at ~${RESET}"
+    git clone https://github.com/ydcjeff/dotfiles $HOME/.dotfiles
+    success "Cloned .dotfiles at $HOME"
   fi
 }
 
 setup_macos() {
   # brew
-  echo "${YELLOW}==> Homebrew installation${RESET}"
+  info "Homebrew installation"
   if test ! $(which brew); then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    echo "${GREEN}==> Homebrew ${INSTALL_DONE}${RESET}"
+    success "Homebrew installation done"
   else
-    echo "${CYAN}==> $(brew --version) ${EXIST}${RESET}"
+    info "$(brew --version) exist, not installing"
   fi
 
   # git
-  echo "${YELLOW}==> Git installation${RESET}"
+  info "Git installation"
   if test ! $(which git); then
     brew update
     brew install git
-    echo "${GREEN}==> Git ${INSTALL_DONE}${RESET}"
+    success "Git installation done"
   else
-    echo "${CYAN}==> $(git --version) ${EXIST}${RESET}"
+    info "$(git --version) exist, not installing"
   fi
 
   links=(
@@ -65,18 +80,18 @@ setup_macos() {
 
   for l in ${links[@]}
   do
-    echo "${GREEN}==> opening ${l}${RESET}"
+    info "Opening ${l}"
     open ${l}
     sleep 1
   done
-  echo "${GREEN}==> macOS setup complete${RESET}"
+  success "macOS setup complete"
 }
 
 setup_archlinux() {
-  echo "${YELLOW}==> Arch Linux setup${RESET}"
+  info "Arch Linux setup"
 
   sudo pacman-key --init
-  echo "${YELLOW}==> add sublime text and merge repo${RESET}"
+  info "Add sublime text and merge repo"
 
   curl -O https://download.sublimetext.com/sublimehq-pub.gpg && \
   sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg
@@ -99,26 +114,26 @@ setup_archlinux() {
     firefox \
     xfce4-screenshooter \
 
-  echo "${YELLOW}==> download Hack font${RESET}"
+  info "Download Hack font"
   curl -fsSL https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.tar.gz --output hack.tar.gz
   tar -xzvf hack.tar.gz
   sudo cp -Rv ttf/*.ttf /usr/share/fonts/
   fc-cache -f -v
   fc-list | grep "Hack"
 
-  echo "${GREEN}==> Arch Linux setup complete${RESET}"
+  success "Arch Linux setup complete"
 }
 
 install_starship() {
-  echo "${YELLOW}==> Starship installation${RESET}"
+  info "Starship theme installation"
 
   if test ! $(which starship); then
     curl -fsSL https://starship.rs/install.sh --output ./install.sh
     chmod +x ./install.sh
     ./install.sh -y
-    echo "${GREEN}==> Starship ${INSTALL_DONE}${RESET}"
+    success "Starship installation done"
   else
-    echo "${CYAN}==> $(starship -V) ${EXIST}${RESET}"
+    info "$(starship -V) exist, not installing"
   fi
 
   export STARSHIP_CONFIG=~/.dotfiles/starship.toml
@@ -126,28 +141,30 @@ install_starship() {
 
 source_dot_files() {
   # source dot files
+  info "Sourcing dotfiles"
+
   if [ $(basename $SHELL) = "zsh" ]; then
-    echo "source ~/.dotfiles/shrc" > ~/.zshrc
+    echo "source ~/.dotfiles/shrc.sh" > ~/.zshrc
     source ~/.zshrc
   elif [ $(basename $SHELL) = "bash" ]; then
-    echo "source ~/.dotfiles/shrc" > ~/.bashrc
+    echo "source ~/.dotfiles/shrc.sh" > ~/.bashrc
     source ~/.bashrc
   fi
 }
 
 main() {
   clone_dotfiles
-  cd ~/.dotfiles
+  cd $HOME/.dotfiles
   git submodule update --init --recursive
+
+  install_starship
+  source_dot_files
 
   if [ $(uname) = "Darwin" ]; then
     setup_macos
   elif [ $(uname) = "Linux" ]; then
     setup_archlinux
   fi
-
-  install_starship
-  source_dot_files
 
   # Some git defaults
   git config --global color.ui true

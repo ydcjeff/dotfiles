@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: pacman -Syu git sudo bash zsh --color always --noconfirm
-      - run: sh setup.sh
+      - run: ${{ matrix.shell }} setup.sh
 
   mac:
     runs-on: macos-latest
@@ -31,4 +31,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: brew install zsh
-      - run: sh setup.sh
+      - run: ${{ matrix.shell }} setup.sh
