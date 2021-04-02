@@ -15,6 +15,8 @@ BLUE=$(tput setaf 12)
 PURPLE=$(tput setaf 13)
 CYAN=$(tput setaf 14)
 
+# from https://starship.rs/install.sh
+
 info() {
   printf "%s\n" "${CYAN}> $*${RESET}"
 }
@@ -31,6 +33,10 @@ success() {
   printf "%s\n" "${GREEN}✔ $*${RESET}"
 }
 
+has() {
+  command -v "$1" 1>/dev/null 2>&1
+}
+
 clone_dotfiles() {
   info "Clone .dotfiles repo"
   if [ -d $HOME/.dotfiles ]; then
@@ -44,21 +50,21 @@ clone_dotfiles() {
 setup_macos() {
   # brew
   info "Homebrew installation"
-  if test ! $(which brew); then
+  if has brew; then
+    info "$(brew --version) exist, not installing"
+  else
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     success "Homebrew installation done"
-  else
-    info "$(brew --version) exist, not installing"
   fi
 
   # git
   info "Git installation"
-  if test ! $(which git); then
+  if has git; then
+    info "$(git --version) exist, not installing"
+  else
     brew update
     brew install git
     success "Git installation done"
-  else
-    info "$(git --version) exist, not installing"
   fi
 
   links=(
@@ -127,13 +133,13 @@ setup_archlinux() {
 install_starship() {
   info "Starship theme installation"
 
-  if test ! $(which starship); then
+  if has starship; then
+    info "$(starship -V) exist, not installing"
+  else
     curl -fsSL https://starship.rs/install.sh --output ./install.sh
     chmod +x ./install.sh
     ./install.sh -y
     success "Starship installation done"
-  else
-    info "$(starship -V) exist, not installing"
   fi
 
   export STARSHIP_CONFIG=$HOME/.dotfiles/starship.toml
