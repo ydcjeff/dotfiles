@@ -38,3 +38,37 @@ jobs:
       - uses: actions/checkout@v2
       - run: brew install zsh
       - run: ${{ matrix.shell }} setup.sh
+
+  linux-link:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    container: archlinux:base-devel
+    defaults:
+      run:
+        shell: sh
+    env:
+      SHELL: ${{ matrix.shell }}
+    strategy:
+      fail-fast: false
+      matrix:
+        shell: [bash, zsh]
+    steps:
+      - run: pacman -Syu git sudo bash zsh curl --color always --noconfirm
+      - run: curl -fsSL https://raw.githubusercontent.com/ydcjeff/dotfiles/main/setup.sh | ${{ matrix.shell }}
+
+  mac-link:
+    if: github.event_name == 'push'
+    runs-on: macos-latest
+    defaults:
+      run:
+        shell: sh
+    env:
+      SHELL: ${{ matrix.shell }}
+    strategy:
+      fail-fast: false
+      matrix:
+        shell: [bash, zsh]
+    steps:
+      - uses: actions/checkout@v2
+      - run: brew install zsh curl
+      - run: curl -fsSL https://raw.githubusercontent.com/ydcjeff/dotfiles/main/setup.sh | ${{ matrix.shell }}
