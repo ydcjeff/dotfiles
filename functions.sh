@@ -1,0 +1,34 @@
+#!/usr/bin/env sh
+
+# Create a new directory and enter it
+md() {
+  mkdir -p "$@" && cd "$@"
+}
+
+# credit: http://nparikh.org/notes/zshrc.txt
+# Usage: extract <file>
+# Description: extracts archived files / mounts disk images
+# Note: .dmg/hdiutil is Mac OS X-specific.
+
+extract() {
+  if [ -f $1 ]; then
+    case $1 in
+      *.tar.bz2)  tar -xzvf $1                        ;;
+      *.tar.gz)   tar -xzvf $1                        ;;
+      *.tar)      tar -xzvf $1                        ;;
+      *.tbz2)     tar -xzvf $1                        ;;
+      *.tgz)      tar -xzvf $1                        ;;
+      *.zip)      unzip $1                            ;;
+      *.ZIP)      unzip $1                            ;;
+      *.gz)       gunzip $1                           ;;
+      *.bz2)      bunzip2 $1                          ;;
+      *.dmg)      hdiutil mount $1                    ;;
+      *.pax)      cat $1 | pax -r                     ;;
+      *.pax.Z)    uncompress $1 --stdout | pax -r     ;;
+      *.Z)        uncompress $1                       ;;
+      *)          echo "'$1' cannot be extracted/mounted via extract()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}

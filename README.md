@@ -1,11 +1,6 @@
-# Personal dotfiles
-- Terminal
-	- Bash
-    - zsh
-    - [Hyper](https://hyper.is)
-    - [iTerm2](https://iterm2.com)
-- VSCode Settings
-- Common Softwares
-- Terminal Shell Setting
-    - [Starship theme](https://starship.rs)
-- Fonts
+# .files
+
+- Bash
+- Zsh
+- [Hack font](https://github.com/source-foundry/Hack)
+- [Starship shell theme](https://starship.rs)

@@ -1,0 +1,4 @@
+# Replace the "❯" symbol in the prompt with ">"
+[character]
+success_symbol = "[>](dimmed)" 
+error_symbol = "[>](bold red)"

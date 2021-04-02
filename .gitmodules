@@ -7,9 +7,3 @@
 [submodule "zsh-history-substring-search"]
 	path = zsh-history-substring-search
 	url = https://github.com/zsh-users/zsh-history-substring-search.git
-[submodule "dwm"]
-	path = dwm
-	url = https://git.suckless.org/dwm
-[submodule "st"]
-	path = st
-	url = https://git.suckless.org/st

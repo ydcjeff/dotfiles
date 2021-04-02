@@ -1,0 +1,40 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    container: archlinux:base-devel
+    defaults:
+      run:
+        shell: sh
+    env:
+      SHELL: ${{ matrix.shell }}
+    strategy:
+      fail-fast: false
+      matrix:
+        shell: [bash, zsh]
+    steps:
+      - uses: actions/checkout@v2
+      - run: pacman -Syu git sudo bash zsh --color always --noconfirm
+      - run: ${{ matrix.shell }} setup.sh
+
+  mac:
+    runs-on: macos-latest
+    defaults:
+      run:
+        shell: sh
+    env:
+      SHELL: ${{ matrix.shell }}
+    strategy:
+      fail-fast: false
+      matrix:
+        shell: [bash, zsh]
+    steps:
+      - uses: actions/checkout@v2
+      - run: brew install zsh
+      - run: ${{ matrix.shell }} setup.sh
