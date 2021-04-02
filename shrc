@@ -1,3 +1,5 @@
+#!$(echo $SHELL)
+
 DOTFILES_PATH=~/.dotfiles
 
 # set default editor

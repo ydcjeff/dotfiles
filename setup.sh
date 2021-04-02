@@ -3,7 +3,7 @@
 # COLORS
 # https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit
 
-# set -e
+set -e
 
 export TERM=xterm-256color
 RESET=$(tput sgr0)
@@ -67,7 +67,7 @@ setup_macos() {
   do
     echo "${GREEN}==> opening ${l}${RESET}"
     open ${l}
-    sleep 3
+    sleep 1
   done
   echo "${GREEN}==> macOS setup complete${RESET}"
 }
@@ -102,7 +102,7 @@ setup_archlinux() {
   echo "${YELLOW}==> download Hack font${RESET}"
   curl -fsSL https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.tar.gz --output hack.tar.gz
   tar -xzvf hack.tar.gz
-  sudo cp -Rv ~/.config/ttf/*.ttf /usr/share/fonts/
+  sudo cp -Rv ttf/*.ttf /usr/share/fonts/
   fc-cache -f -v
   fc-list | grep "Hack"
 
@@ -129,7 +129,7 @@ source_dot_files() {
   if [ $(basename $SHELL) = "zsh" ]; then
     echo "source ~/.dotfiles/shrc" > ~/.zshrc
     source ~/.zshrc
-  elif [$(basename $SHELL) = "bash" ]; then
+  elif [ $(basename $SHELL) = "bash" ]; then
     echo "source ~/.dotfiles/shrc" > ~/.bashrc
     source ~/.bashrc
   fi
