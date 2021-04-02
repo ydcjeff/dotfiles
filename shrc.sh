@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-DOTFILES_PATH=~/.dotfiles
+DOTFILES_PATH=$HOME/.dotfiles
 
 # set default editor
 export EDITOR="code"
@@ -25,7 +25,7 @@ fi
 if [ $(basename $SHELL) = "zsh" ]; then
   eval "$(starship init zsh)"
   # reload
-  alias rl="source ~/.zshrc; echo '~/.zshrc reloaded.'"
+  alias rl="source $HOME/.zshrc; echo '$HOME/.zshrc reloaded.'"
   # zsh extras
   source "$DOTFILES_PATH"/zsh-autosuggestions/zsh-autosuggestions.zsh
   source "$DOTFILES_PATH"/zsh-history-substring-search/zsh-history-substring-search.zsh
@@ -34,5 +34,5 @@ if [ $(basename $SHELL) = "zsh" ]; then
 elif [ $(basename $SHELL) = "bash" ]; then
   eval "$(starship init bash)"
   # reload
-  alias rl="source ~/.bashrc; echo '~/.bashrc reloaded.'"
+  alias rl="source $HOME/.bashrc; echo '$HOME/.bashrc reloaded.'"
 fi

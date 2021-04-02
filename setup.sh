@@ -33,7 +33,7 @@ success() {
 
 clone_dotfiles() {
   info "Clone .dotfiles repo"
-  if [ -d ~/.dotfiles ]; then
+  if [ -d $HOME/.dotfiles ]; then
     info ".dotfiles dir exist, not cloning"
   else
     git clone https://github.com/ydcjeff/dotfiles $HOME/.dotfiles
@@ -136,7 +136,7 @@ install_starship() {
     info "$(starship -V) exist, not installing"
   fi
 
-  export STARSHIP_CONFIG=~/.dotfiles/starship.toml
+  export STARSHIP_CONFIG=$HOME/.dotfiles/starship.toml
 }
 
 source_dot_files() {
@@ -144,11 +144,11 @@ source_dot_files() {
   info "Sourcing dotfiles"
 
   if [ $(basename $SHELL) = "zsh" ]; then
-    echo "source ~/.dotfiles/shrc.sh" > ~/.zshrc
-    source ~/.zshrc
+    echo "source $HOME/.dotfiles/shrc.sh" > $HOME/.zshrc
+    source $HOME/.zshrc
   elif [ $(basename $SHELL) = "bash" ]; then
-    echo "source ~/.dotfiles/shrc.sh" > ~/.bashrc
-    source ~/.bashrc
+    echo "source $HOME/.dotfiles/shrc.sh" > $HOME/.bashrc
+    source $HOME/.bashrc
   fi
 }
 
