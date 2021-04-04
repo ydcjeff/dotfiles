@@ -130,6 +130,7 @@ setup_archlinux() {
     network-manager-applet \
     lightdm \
     lightdm-gtk-greeter \
+    light-locker \
     wpa_applicant \
 
   info "Download Hack font"
@@ -138,6 +139,9 @@ setup_archlinux() {
   sudo cp -Rv ttf/*.ttf /usr/share/fonts/
   fc-cache -f -v
   fc-list | grep "Hack"
+
+  info "Installing Papirus icon theme"
+  wget -qO- https://git.io/papirus-icon-theme-install | sh
 
   success "Arch Linux setup complete"
 }
