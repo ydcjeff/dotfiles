@@ -8,6 +8,7 @@ export VISUAL="$EDITOR"
 
 source "$DOTFILES_PATH"/aliases.sh
 source "$DOTFILES_PATH"/functions.sh
+export STARSHIP_CONFIG=$HOME/.dotfiles/starship.toml
 
 # mac or linux
 if [ $(uname) = "Darwin" ]; then

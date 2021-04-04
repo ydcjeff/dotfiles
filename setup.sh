@@ -30,7 +30,7 @@ error() {
 }
 
 success() {
-  printf "%s\n" "${GREEN}✔ $*${RESET}"
+  printf "%s\n" "${GREEN}✓ $*${RESET}"
 }
 
 has() {
@@ -105,8 +105,10 @@ setup_archlinux() {
 
   sudo pacman -Syu --noconfirm --color always sublime-text sublime-merge
   sudo pacman -Syu --noconfirm --color always \
+    linux-headers \
     git \
     wget \
+    curl \
     unzip \
     unrar \
     telegram-desktop \
@@ -118,7 +120,17 @@ setup_archlinux() {
     zsh \
     neofetch \
     firefox \
-    xfce4-screenshooter \
+    xfce4 \
+    xfce4-goodies \
+    bspwm \
+    sxhkd \
+    rofi \
+    dunst \
+    networkmanager \
+    network-manager-applet \
+    lightdm \
+    lightdm-gtk-greeter \
+    wpa_applicant \
 
   info "Download Hack font"
   curl -fsSL https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.tar.gz --output hack.tar.gz
@@ -141,8 +153,6 @@ install_starship() {
     ./install.sh -y
     success "Starship installation done"
   fi
-
-  export STARSHIP_CONFIG=$HOME/.dotfiles/starship.toml
 }
 
 source_dot_files() {
