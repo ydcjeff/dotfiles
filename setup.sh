@@ -105,6 +105,14 @@ setup_archlinux() {
 
   sudo pacman -Syu --noconfirm --color always sublime-text sublime-merge
   sudo pacman -Syu --noconfirm --color always \
+    alsa \
+    jack \
+    pulseaudio \
+    gmtp \
+    findutils \
+    github-cli \
+    adobe-source-han-sans-fonts \
+    adobe-source-han-serif-fonts \
     linux-headers \
     git \
     wget \
@@ -112,6 +120,7 @@ setup_archlinux() {
     unzip \
     unrar \
     telegram-desktop \
+    discord \
     nodejs \
     npm \
     code \
