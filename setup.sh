@@ -30,7 +30,7 @@ error() {
 }
 
 success() {
-  printf "%s\n" "${GREEN}✔ $*${RESET}"
+  printf "%s\n" "${GREEN}✓ $*${RESET}"
 }
 
 has() {
@@ -105,11 +105,22 @@ setup_archlinux() {
 
   sudo pacman -Syu --noconfirm --color always sublime-text sublime-merge
   sudo pacman -Syu --noconfirm --color always \
+    alsa \
+    jack \
+    pulseaudio \
+    gmtp \
+    findutils \
+    github-cli \
+    adobe-source-han-sans-fonts \
+    adobe-source-han-serif-fonts \
+    linux-headers \
     git \
     wget \
+    curl \
     unzip \
     unrar \
     telegram-desktop \
+    discord \
     nodejs \
     npm \
     code \
@@ -118,7 +129,18 @@ setup_archlinux() {
     zsh \
     neofetch \
     firefox \
-    xfce4-screenshooter \
+    xfce4 \
+    xfce4-goodies \
+    bspwm \
+    sxhkd \
+    rofi \
+    dunst \
+    networkmanager \
+    network-manager-applet \
+    lightdm \
+    lightdm-gtk-greeter \
+    light-locker \
+    wpa_applicant \
 
   info "Download Hack font"
   curl -fsSL https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.tar.gz --output hack.tar.gz
@@ -126,6 +148,9 @@ setup_archlinux() {
   sudo cp -Rv ttf/*.ttf /usr/share/fonts/
   fc-cache -f -v
   fc-list | grep "Hack"
+
+  info "Installing Papirus icon theme"
+  wget -qO- https://git.io/papirus-icon-theme-install | sh
 
   success "Arch Linux setup complete"
 }
@@ -141,8 +166,6 @@ install_starship() {
     ./install.sh -y
     success "Starship installation done"
   fi
-
-  export STARSHIP_CONFIG=$HOME/.dotfiles/starship.toml
 }
 
 source_dot_files() {
@@ -175,6 +198,13 @@ main() {
   # Some git defaults
   git config --global color.ui true
   git config --global push.default simple
+  git config --global fetch.prune true
+  # load github and gitlab profiles
+  # gitdit/i is case insensitive
+  git config --global user.name "ydcjeff"
+  git config --global user.email "32727188+ydcjeff@users.noreply.github.com"
+  git config --global includeIf.gitdir/i:$HOME/gh/.path $DOTFILES_PATH/gh.ini
+  git config --global includeIf.gitdir/i:$HOME/gl/.path $DOTFILES_PATH/gl.ini
 }
 
 main

@@ -1,10 +1,13 @@
 #!/usr/bin/env sh
 
-DOTFILES_PATH=$HOME/.dotfiles
 
 # set default editor
 export EDITOR="code"
 export VISUAL="$EDITOR"
+export DOTFILES_PATH=$HOME/.dotfiles
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export STARSHIP_CONFIG=$HOME/.dotfiles/starship.toml
 
 source "$DOTFILES_PATH"/aliases.sh
 source "$DOTFILES_PATH"/functions.sh

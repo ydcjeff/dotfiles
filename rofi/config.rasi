@@ -1,0 +1,10 @@
+configuration {
+  modi: "window,drun,run,ssh";   
+  font: "monospace 12";
+  show-icons: true;
+  icon-theme: "Papirus Dark";
+  terminal: "xfce4-terminal";
+  sidebar-mode: true;
+  matching: "fuzzy";
+  theme: "Pop-Dark";
+}
