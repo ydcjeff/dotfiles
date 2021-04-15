@@ -199,6 +199,12 @@ main() {
   git config --global color.ui true
   git config --global push.default simple
   git config --global fetch.prune true
+  # load github and gitlab profiles
+  # gitdit/i is case insensitive
+  git config --global user.name "ydcjeff"
+  git config --global user.email "32727188+ydcjeff@users.noreply.github.com"
+  git config --global includeIf.gitdir/i:$HOME/gh/.path $DOTFILES_PATH/gh.ini
+  git config --global includeIf.gitdir/i:$HOME/gl/.path $DOTFILES_PATH/gl.ini
 }
 
 main
