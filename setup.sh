@@ -198,6 +198,7 @@ main() {
   # Some git defaults
   git config --global color.ui true
   git config --global push.default simple
+  git config --global fetch.prune true
 }
 
 main
